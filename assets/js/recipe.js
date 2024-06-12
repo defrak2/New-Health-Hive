@@ -9,24 +9,8 @@ function getMealRec() {
       console.log('No results returned')
       return;
     }
-    data.meals.forEach(function(meal) {
-      createResultCard(meal);
-      const country = meal.strArea;
-      const wikiURL = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${country}+cuisine&format=json`
-      searchWiki(wikiURL);
-      
-      fetch(wikiURL)
-      .then(response => response.json())
-      .then(data => {
-       if (!data ||!data.query ||!data.query.search || data.query.search.length === 0) {
-         console.log('No results returned');
-         return;
-       }
-       data.query.search.forEach(search => {
-         createWikiCard(search);
-       });
-     })
-    });
+    createResultCard(data.meals[0]);
+    genWikiCards(data.meals[0]);
   })
 }
 
@@ -97,10 +81,52 @@ function createResultCard(meal) {
 
   document.querySelector('#meal-box').appendChild(col);
 }
+function grabSpecificMeal() {
+  const idSearch = window.location.search
+  console.log(idSearch);
+  const param = new URLSearchParams(idSearch)
+  const id = param.get('id');
+console.log(id)
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+ .then(function(resp) {
+    return resp.json()
+  })
+ .then(function(data){
+    console.log(data)
+    if (!data ||!data.meals || data.meals.length === 0){
+      console.log('No results returned')
+      return;
+    }
+    createResultCard(data.meals[0]);
+    genWikiCards(data.meals[0]);
+  })
+}
 
+if (window.location.search) {
 
+grabSpecificMeal();
 
-getMealRec();
+} else {
+  getMealRec();
+}
+
+function genWikiCards (meal) {
+  const country = meal.strArea;
+  const wikiURL = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${country}+cuisine&format=json`
+  searchWiki(wikiURL);
+  
+  fetch(wikiURL)
+  .then(response => response.json())
+  .then(data => {
+   if (!data ||!data.query ||!data.query.search || data.query.search.length === 0) {
+     console.log('No results returned');
+     return;
+   }
+   data.query.search.forEach(search => {
+     createWikiCard(search);
+   });
+ })
+}
 
 // dateModified
 // : 

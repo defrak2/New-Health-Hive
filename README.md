@@ -50,3 +50,11 @@ Demo: Show your stuff!
 Directions for future development.
 
 Links to the deployed application and the GitHub repository.
+
+
+
+TODO:
+
+1- save button that utilizes id with a different mealdb API call
+
+2- a dropdown menu can fetch categories that can be placed in another fetch to find cuisine in that category
