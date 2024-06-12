@@ -43,7 +43,7 @@ function createResultCard(meal) {
   const mealInstructions = meal.strInstructions;
 
   const col = document.createElement('div');
-  col.className = 'col s12 m7';
+  col.className = 'col s12';
 
   const header = document.createElement('h2');
   header.className = 'header';
@@ -95,7 +95,7 @@ function createResultCard(meal) {
   col.appendChild(header);
   col.appendChild(card);
 
-  document.querySelector('.meal-box').appendChild(col);
+  document.querySelector('#meal-box').appendChild(col);
 }
 
 
