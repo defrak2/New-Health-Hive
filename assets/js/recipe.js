@@ -31,42 +31,71 @@ function getMealRec() {
 }
 
 function createResultCard(meal) {
-  const mealBox = document.querySelector('.meal-box');
-  const mealCard = document.createElement('div');
-  mealCard.classList.add('meal-card');
-
-  const mealTitle = document.createElement('h3');
-  mealTitle.textContent = meal.strMeal;
-  mealCard.append(mealTitle);
-
-  const mealImg = document.createElement('a')
-  mealImg.href = meal.strMealThumb;
-  mealCard.append(mealImg);
-
-  const img = document.createElement('img');
-  img.src = meal.strMealThumb;
-  img.alt = meal.strMeal;
-
-  mealImg.appendChild(img);
-  mealCard.append(mealImg);
-
+  console.log('Meal object', meal)
+  const mealTitle = meal.strMeal;
+  const mealImg = meal.strMealThumb;
   const mealIngredients = [];
   for (let i = 1; i <= 20; i++) {
     if (meal[`strIngredient${i}`] && meal[`strMeasure${i}`]) {
-      const mealIng = document.createElement('p');
-      mealIng.textContent = `${meal[`strMeasure${i}`]} ${meal[`strIngredient${i}`]}`;
-      mealCard.append(mealIng);
-      mealIngredients.push(`${meal[`strMeasure${i}`]} ${meal[`strIngredient${i}`]} `);
+      mealIngredients.push(`${meal[`strMeasure${i}`]} ${meal[`strIngredient${i}`]}`);
     }
   }
+  const mealInstructions = meal.strInstructions;
 
-  const mealInst = document.createElement('p')
-  mealInst.textContent = meal.strInstructions;
-  mealCard.append(mealInst)
+  const col = document.createElement('div');
+  col.className = 'col s12 m7';
 
+  const header = document.createElement('h2');
+  header.className = 'header';
+  header.textContent = `${mealTitle}`;
 
+  const card = document.createElement('div');
+  card.className = 'card horizontal';
 
-  mealBox.append(mealCard);
+  const cardImage = document.createElement('div');
+  cardImage.className = 'card-image';
+
+  const img = document.createElement('img');
+  img.src = mealImg;
+
+  cardImage.appendChild(img);
+
+  const cardStacked = document.createElement('div');
+  cardStacked.className = 'card-stacked';
+
+  const cardContent = document.createElement('div');
+  cardContent.className = 'card-content';
+
+  const ul = document.createElement('ul');
+
+  mealIngredients.forEach(ingredient => {
+    const li = document.createElement('li');
+    li.textContent = ingredient;
+    ul.appendChild(li);
+  });
+  
+  cardContent.appendChild(ul);
+  
+
+  const cardAction = document.createElement('div');
+  cardAction.className = 'card-action';
+
+  const paragraph = document.createElement('p');
+
+  paragraph.textContent = `Meal Instructions: ${mealInstructions}`;
+
+  cardAction.appendChild(paragraph);
+
+  cardStacked.appendChild(cardContent);
+  cardStacked.appendChild(cardAction);
+
+  card.appendChild(cardImage);
+  card.appendChild(cardStacked);
+
+  col.appendChild(header);
+  col.appendChild(card);
+
+  document.querySelector('.meal-box').appendChild(col);
 }
 
 

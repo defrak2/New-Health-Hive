@@ -26,9 +26,16 @@ function createWikiCard(search) {
 
   const wikiCard = document.createElement('div');
   wikiCard.innerHTML = `
-    <h2>${title}</h2>
+  <div class="card">
+  <div class="card-content">
+    <span class="card-title">${title}</span>
     <p>${snippet}</p>
-    <a href="${url}" target="_blank">Read more on Wikipedia</a>
+  </div>
+  <div class="card-action">
+    <a href="${url}">Read more on Wikipedia</a>
+
+  </div>
+</div>
   `;
   document.getElementById('wiki-cards-container').appendChild(wikiCard);
 }
