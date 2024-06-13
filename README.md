@@ -55,6 +55,8 @@ Links to the deployed application and the GitHub repository.
 
 TODO:
 
-1- save button that utilizes id with a different mealdb API call
+1- make a favorites section
 
-2- a dropdown menu can fetch categories that can be placed in another fetch to find cuisine in that category
+2- select item from modal bug needs resolved to populate a results.html file that loads the id of the food selected
+
+3- let the modal show a few random meal ideas and not just one
