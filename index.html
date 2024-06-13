@@ -15,35 +15,37 @@
     <nav>
       <div class="nav-wrapper">
         <a href="./assets/images/screenshot.png" class="brand-logo">WikiBite</a>
-        <ul id="nav-mobile" class="right">
+        <!-- <ul id="nav-mobile" class="right">
           <li><a href="./index.html">Back</a></li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
     <form id="form-category">
       <label for="form-select-6">Browser Select</label>
       <select id="form-select-6" class="browser-default">
         <option value="" disabled selected>Choose your option</option>
-        <option value="1">Vegetarian</option>
+        <!-- <option value="1">Vegetarian</option>
         <option value="2">Beef</option>
         <option value="3">Chicken</option>
         <option value="4">Dessert</option>
-        <option value="5">Miscellaneous</option>
+        <option value="5">Miscellaneous</option> -->
+
       </select>
     </form>
-    <!-- Modal Trigger -->
+
+    <!-- Modal Trigger
     <a class="waves-effect waves-light btn modal-trigger" href="#modal1"
       >Modal</a
-    >
+    > -->
 
     <!-- Modal Structure -->
-    <div id="modal1" class="modal bottom-sheet">
+    <div id="modal" class="modal bottom-sheet">
       <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
+        <h2>Random Recipe</h4>
+        <p id="random-recipe"></p>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect btn-flat">Agree</a>
+        <a href="./results.html" class="modal-close waves-effect btn-flat">Agree</a>
       </div>
     </div>
 
@@ -60,9 +62,10 @@
         <div class="container">Made by Cody, Kendra, Mike and Whitney</div>
       </div>
     </footer>
-    <!-- <script src="./assets/js/recipe.js"></script> -->
+    <script src="./assets/js/recipe.js"></script>
     <script src="./assets/js/wiki.js"></script>
     <script src="./assets/js/modal.js"></script>
+    <script src="./assets/js/dropdown.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
