@@ -82,7 +82,7 @@ function createResultCard(meal) {
   document.querySelector('#meal-box').appendChild(col);
 }
 function grabSpecificMeal() {
-  const idSearch = window.location.search
+  const idSearch = window.location.search;
   console.log(idSearch);
   const param = new URLSearchParams(idSearch)
   const id = param.get('id');
@@ -103,9 +103,7 @@ console.log(id)
 }
 
 if (window.location.search) {
-
-grabSpecificMeal();
-
+  grabSpecificMeal();
 } else {
   getMealRec();
 }
