@@ -70,6 +70,12 @@ function createResultCard(meal) {
 
   cardAction.appendChild(paragraph);
 
+  const favoriteButton = document.createElement('button');
+  favoriteButton.className = 'btn favorite-btn';
+  favoriteButton.textContent = 'Add to Favorites';
+
+  cardAction.appendChild(favoriteButton);
+
   cardStacked.appendChild(cardContent);
   cardStacked.appendChild(cardAction);
 
