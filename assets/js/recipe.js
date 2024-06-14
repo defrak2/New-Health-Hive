@@ -1,17 +1,17 @@
 function getMealRec() {
   fetch('https://www.themealdb.com/api/json/v1/1/random.php')
- .then(function(resp) {
-    return resp.json()
-  })
- .then(function(data){
-    console.log(data)
-    if (!data ||!data.meals || data.meals.length === 0){
-      console.log('No results returned')
-      return;
-    }
-    createResultCard(data.meals[0]);
-    genWikiCards(data.meals[0]);
-  })
+    .then(function(resp) {
+      return resp.json()
+    })
+    .then(function(data) {
+      console.log(data)
+      if (!data || !data.meals || data.meals.length === 0) {
+        console.log('No results returned')
+        return;
+      }
+      createResultCard(data.meals[0]);
+      genWikiCards(data.meals[0]);
+    })
 }
 
 function createResultCard(meal) {
@@ -57,9 +57,9 @@ function createResultCard(meal) {
     li.textContent = ingredient;
     ul.appendChild(li);
   });
-  
+
   cardContent.appendChild(ul);
-  
+
 
   const cardAction = document.createElement('div');
   cardAction.className = 'card-action';
@@ -74,6 +74,10 @@ function createResultCard(meal) {
   favoriteButton.className = 'btn favorite-btn';
   favoriteButton.textContent = 'Add to Favorites';
 
+  favoriteButton.addEventListener('click', function() {
+    addToFavorites(meal);
+  });
+
   cardAction.appendChild(favoriteButton);
 
   cardStacked.appendChild(cardContent);
@@ -87,30 +91,46 @@ function createResultCard(meal) {
 
   document.querySelector('#meal-box').appendChild(col);
 }
+
+function addToFavorites(meal) {
+  let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  
+  const existingIndex = favorites.findIndex(fav => fav.idMeal === meal.idMeal);
+
+  if (existingIndex === -1) {
+    favorites.push(meal);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    alert('Meal added to favorites!');
+  } else {
+    alert('This meal is already in your favorites!');
+  }
+}
+
 function grabSpecificMeal() {
   const idSearch = window.location.search;
   console.log(idSearch);
   const param = new URLSearchParams(idSearch)
   const id = param.get('id');
-console.log(id)
-if (id) {
-  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
- .then(function(resp) {
-    return resp.json()
-  })
- .then(function(data){
-    console.log(data)
-    if (!data ||!data.meals || data.meals.length === 0){
-      console.log('No results returned')
-      return;
-    }
-    const mealData = data.meals[0];
-    console.log(mealData);
-    createResultCard(data.meals[0]);
-    genWikiCards(data.meals[0]);
-  })
-  .catch(error=>console.log(error))
-}
+  console.log(id)
+  if (id) {
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+      .then(function(resp) {
+        return resp.json()
+      })
+      .then(function(data) {
+        console.log(data)
+        if (!data || !data.meals || data.meals.length === 0) {
+          console.log('No results returned')
+          return;
+        }
+        const mealData = data.meals[0];
+        console.log(mealData);
+        createResultCard(data.meals[0]);
+        genWikiCards(data.meals[0]);
+      })
+      .catch(error => console.log(error))
+  }
 
 }
 
@@ -120,20 +140,62 @@ if (window.location.search) {
   getMealRec();
 }
 
-function genWikiCards (meal) {
+function genWikiCards(meal) {
   const country = meal.strArea;
   const wikiURL = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${country}+cuisine&format=json`
   searchWiki(wikiURL);
-  
+
   fetch(wikiURL)
-  .then(response => response.json())
-  .then(data => {
-   if (!data ||!data.query ||!data.query.search || data.query.search.length === 0) {
-     console.log('No results returned');
-     return;
-   }
-   data.query.search.forEach(search => {
-     createWikiCard(search);
-   });
- })
+    .then(response => response.json())
+    .then(data => {
+      if (!data || !data.query || !data.query.search || data.query.search.length === 0) {
+        console.log('No results returned');
+        return;
+      }
+      data.query.search.forEach(search => {
+        createWikiCard(search);
+      });
+    })
+}
+
+
+function searchWiki(wikiURL) {
+  const script = document.createElement('script');
+  script.src = `${wikiURL}&callback=handleWikiResponse`;
+  document.head.appendChild(script);
+
+}
+
+function handleWikiResponse(data) {
+  console.log(data);
+  if (data.query.search && data.query.search.length > 0) {
+    data.query.search.forEach(search => {
+      createWikiCard(search);
+    });
+  } else {
+    console.log('No search results found');
+  }
+}
+
+
+function createWikiCard(search) {
+  console.log('Search object', search)
+  const title = search.title;
+  const snippet = search.snippet;
+  const url = `https://en.wikipedia.org/wiki/${title}`;
+
+  const wikiCard = document.createElement('div');
+  wikiCard.innerHTML = `
+  <div class="card">
+  <div class="card-content">
+    <span class="card-title">${title}</span>
+    <p>${snippet}</p>
+  </div>
+  <div class="card-action">
+    <a href="${url}">Read more on Wikipedia</a>
+
+  </div>
+</div>
+  `;
+  document.getElementById('wiki-cards-container').appendChild(wikiCard);
 }

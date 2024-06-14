@@ -14,6 +14,12 @@
     <nav>
       <div class="nav-wrapper">
         <a href="./assets/images/screenshot.png" class="brand-logo">WikiBite</a>
+        <!-- Favorites dropdown -->
+        <div class="right">
+          <select id="favorites-dropdown" class="browser-default">
+            <option value="" disabled selected>Choose a favorite</option>
+          </select>
+        </div>
       </div>
     </nav>
   </header>
@@ -27,22 +33,26 @@
       <label for="form-select-6">Select Random Recipe</label>
       <a href="./results.html" class="modal-close waves-effect btn-flat" id="modal-random-btn">Click Me!!</a>
     </form>
+<<<<<<< feature-whitney
 
 
 
 
 <!-- Thumbnail Container -->
+=======
+    <!-- Thumbnail Container -->
+>>>>>>> main
     <div class="thumbnail-container" id="thumbnail-container"></div>
   </main>
-    <!-- Modal Structure -->
-    <div id="modal" class="modal bottom-sheet">
-      <div class="modal-content">
 
-      </div>
-      <div class="modal-footer">
-        <a href="./results.html" class="modal-close waves-effect btn-flat" id="modal-close-btn">Select</a>
-      </div>
+  <!-- Modal Structure -->
+  <div id="modal" class="modal bottom-sheet">
+    <div class="modal-content">
     </div>
+    <div class="modal-footer">
+      <a href="./results.html" class="modal-close waves-effect btn-flat" id="modal-close-btn">Select</a>
+    </div>
+  </div>
 
     <footer class="page-footer">
       <div class="container">
@@ -76,13 +86,42 @@
   <script src="./assets/js/dropdown.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
+    function populateFavoritesDropdown() {
+      let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const dropdown = document.getElementById('favorites-dropdown');
+
+      
+      dropdown.innerHTML = '<option value="" disabled selected>Choose a favorite</option>';
+
+      
+      favorites.forEach(meal => {
+        const option = document.createElement('option');
+        option.value = `./results.html?id=${meal.idMeal}`;
+        option.text = meal.strMeal;
+        dropdown.appendChild(option);
+      });
+
+      
+      M.FormSelect.init(dropdown);
+    }
+
+    
+    document.getElementById('favorites-dropdown').addEventListener('change', function() {
+      const selectedUrl = this.value;
+      if (selectedUrl) {
+        window.location.href = selectedUrl;
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('select');
       var instances = M.FormSelect.init(elems);
 
+      
       var elemsModal = document.querySelectorAll('.modal');
       var instancesModal = M.Modal.init(elemsModal);
 
+      
       function getMealRec() {
         for (let i = 0; i < 3; i++) {
           fetch('https://www.themealdb.com/api/json/v1/1/random.php')
@@ -90,7 +129,6 @@
               return resp.json();
             })
             .then(function (data) {
-              console.log(data);
               if (!data || !data.meals || data.meals.length === 0) {
                 console.log('No results returned');
                 return;
@@ -107,6 +145,9 @@
         }
       }
       getMealRec();
+
+      
+      populateFavoritesDropdown();
     });
   </script>
 </body>
