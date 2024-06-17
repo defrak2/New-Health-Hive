@@ -23,22 +23,17 @@ Welcome to Wikibite!
  These profiles are all provided in a formal aesthetic via use of the materialize framework for CSS.
 
 
-## Table of Contents
-
-- [Usage](#usage)
-- [Credits](#credits)
-- [Roadmap](#roadmap)
-- [License](#license)
-
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Website URL: https://defrak2.github.io/WikiBite/index.html
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+
+![Top of landing page](assets/images/screenshot3.png)
+![Bottom of landing page](assets/images/screenshot4.png)
+![Selection modal](assets/images/screenshot5.png)
+![Result page](assets/images/screenshot1.png)
+![Favorite Dropdown on landing page](assets/images/screenshot2.png)
 
 ## Credits
 
