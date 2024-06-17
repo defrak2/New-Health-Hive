@@ -1,60 +1,92 @@
-# New-Health-Hive
+# Wikibite
+ 
+## Description
 
-Project 1: Interactive Front-End Application
-At the conclusion of each phase of this course, you’ll work with a group of your fellow students to create a project—collaborative work among a group of developers to create an application that solves a real-world problem. Projects model the experience you’ll encounter in every development role at any company, from large multinational businesses to small startups. Coding is collaborative.
+Welcome to Wikibite!
 
-A project is a bit different from the Challenge assignments you’ve worked on so far. One of the biggest differences is that you’ll no longer build an application by yourself! This has some advantages—you won’t have to do all of the work, you can divide up duties, and you can share skills and knowledge with other developers and rely on their strengths. Yet this can also be challenging if you’re used to working alone. Constant communication and time management are just two of the skills you’ll need to practice to make sure everyone in your group works together to complete the project.
+ One of the few things that people cannot go without is food.  It is a great cultural force that can cross barriers and is one of the primary means in which people interact, through meals, whither preparing them for others or for themselves.  Though many things have changed in previous decades and will occur in coming decades, food and the preparation of it can convey so much.
 
-You won't receive a user story or acceptance criteria for your projects, because you and your group will create them once you decide which real-world problem your application will solve. This lack of constraints can be freeing in a way, because you have room to build what you want, but it also means that you have to decide what those constraints are before you can start working.
+ This project began with the desire to provide a simple and effective way to access international cuisine while alowing freedom of exploration.  Additionally, if a person finds a particular recipe that they would like to access for future use, it allows the user to save the recipe.  
 
-Finally, a project requires a presentation, because you’re trying to convince an audience that it serves a purpose. Your instructional staff and fellow students are investors, and you’re pitching your creation to them—an experience that developers are required to do frequently. Your presentation is just as important as the actual project, so take it just as seriously.
+ As stated earlier, changes have occurred in previous years and decades, and will continue to change.  Increased access to out of home dining, while an amazing innovation, has created issues of it's own.  On average, these meals tend to be hyper-palatable and calorically dense.  Additionally, while they may appear on face value to be time effective, they typically cost more per meal. 
+ 
+ The solution may seem to be to practice meal preparation, but this often fails due to a number of issues, chief among them is lack of variety.  While there is a segment of the population that are capable of monotony in diet, these people tend to be outliers.  While there have been previous attempts to provide this service with encompassed food delivered to be prepared by the customer, this may have not been the optimal model for most due to issues with pre-selected sizes & food stuff.
 
-Project Requirements
-With your team, you'll conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. You'll also learn about agile development methodologies to help you work collaboratively. You'll implement feature and bug fixes using Git branch workflow and pull requests.
+ Also, in an increasingly connected international community with increased daily demands, one may prefer to access a meal that they no longer have access to using.  Maybe it was made by a family member who no longer is able to prepare food, or through a community in which they are no longer in touch with.
 
-You'll write your own user stories and acceptance criteria in GitHub Issues to help your team stay on track with the project. Using GitHub Project to track the status of your project tasks will help you understand the benefits of Kanban boards.
+ This project has delivered on the autonomy portion with room to spare. The collaborators learned that there are resources to be leveraged to provide a variety of international food, while still allowing the ability to select from preferred recipes in a pinch.
 
-You and your group will use everything you’ve learned over the past six modules to create a real-world front-end application that you’ll be able to showcase to potential employers. The user story and acceptance criteria will depend on the project that you create, but your project must fulfill the following requirements:
+ In further detail, this project provides a landing page that provides interaction via a modal to select from fourteen different choice.  when selected, the modal fetches 3 random recipes recipes containing the type of food selected.  if desired, a person can select one of the three recipes.  JSON compiles data from themealdb.com and returns a second page containing a card, with ingredients and the recipe. On the same recipe page, wikipedia information pertaining to key aspect of the food type and culture of orgin are returned, as well as potential relevent information provided on the right hand side for further exploration.  If someone wants to view the recipe later, they can simply save it via the favorite button.  
 
-Use a CSS framework other than Bootstrap.
+ When they return, they can select the favorite button to find the entailed food item.  Additionally, if wanting to simply explore different cuisine, on the landing page a user can select the random button for a completely random food item.
 
-Be deployed to GitHub Pages.
-
-Be interactive (in other words, accept and respond to user input).
-
-Use at least two server-side APIsLinks to an external site..
-
-Include at least one modal, and does not use native browser alert, confirm, or prompt functionality.
-
-Use client-side storage to store persistent data.
-
-Be responsive.
-
-Have a polished UI.
-
-Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class/id naming conventions, indentation, quality comments, and so on).
-
-Have a quality README (including a unique name, description, technologies used, screenshot, and link to the deployed application).
-
-Presentation Requirements
-Use this Project Presentation TemplateLinks to an external site. to address the following:
-
-Elevator pitch: A one-minute description of your application.
-
-Concept: What is your user story? What was your motivation for development?
-
-Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-Demo: Show your stuff!
-
-Directions for future development.
-
-Links to the deployed application and the GitHub repository.
+ These profiles are all provided in a formal aesthetic via use of the materialize framework for CSS.
 
 
+## Table of Contents
 
-TODO:
+- [Usage](#usage)
+- [Credits](#credits)
+- [Roadmap](#roadmap)
+- [License](#license)
 
-1- save button that utilizes id with a different mealdb API call
+## Usage
 
-2- a dropdown menu can fetch categories that can be placed in another fetch to find cuisine in that category
+Provide instructions and examples for use. Include screenshots as needed.
+
+To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+
+    ```md
+    ![alt text](assets/images/screenshot.png)
+    ```
+
+## Credits
+
+List your collaborators, if any, with links to their GitHub profiles.
+1. Kendra Defransisco @https://github.com/defrak2
+2. Cody Barnes @https://github.com/CodyBarnes9624
+3. Whitney Burnette @https://github.com/wcburnette
+4. Michael Bayat @https://github.com/mikebayat
+
+Below are the sourced materials utilized in Wikibite:
+
+- [the meal DB](https://www.themealdb.com/)
+- [wikipedia](https://www.wikipedia.org/)
+- [Materialize](https://materializecss.com/)
+
+
+## Roadmap
+
+this is the initial phase of the product,  Anticipated phases of development are as follow
+- [x] provide ability to acquire random meal based off of selected food type
+- [x] provide secondary information pertaining to meal country of origin, as well as other relevent information
+- [x] have ability to cache particular meals for future reference
+- [x] provide variety to explore via a random button
+in phase two, the addition of the following features is what is desired.
+- [] Provide scaleability by adjusting quantity of ingredients by number of people served
+- [] Provide ability to have multiple criteria for modal to parse back recipes, such as country of origin
+
+At a future date after completion of phase two, the next step would be the ability to provide a palette for the user based off of previous favorites, as well as potential like and dislike button to further help with selection.
+
+## License
+
+Copyright (c) 2024 defrak2
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+---

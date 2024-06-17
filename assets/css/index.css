@@ -12,6 +12,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  background-color: rgb(82, 117, 117);
 }
 
 header, nav, footer {
@@ -33,6 +34,7 @@ header, nav, footer {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+
 }
 
 .thumbnail-images img {
@@ -42,12 +44,39 @@ header, nav, footer {
   border-radius: 8px;
 }
 
+#modal-random-btn {
+  color: white;
+  font-weight: bold;
+}
+
 footer .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  background-color: rgb(82, 117, 117);
+  color: #fff;
 }
 
 footer .row {
   margin-bottom: 0;
+}
+
+footer a {
+  color: #bbb;
+  text-decoration: none; 
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: underline; 
+}
+
+
+.footer-copyright {
+  background-color: rgb(82, 117, 117); 
+  padding: 10px 0; 
+  text-align: center; 
+  color: #ccc; 
 }
